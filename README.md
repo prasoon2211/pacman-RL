@@ -11,28 +11,29 @@ The deep neural net is modeled in tensorflow and we use the Open AI Gym to gener
 ### Requirements:
 
 - Python 3.5
-- tensorflow=0.1.4
-- Open AI Gym
-- Open AI Gym[atari]
 - numpy
-- baselines=0.1.4
 - scikit-learn
+- tensorflow==1.4.0
+- Open AI Gym ([See this link](https://github.com/openai/gym#installation))
+- Open AI Gym[atari] ([See this link](https://github.com/openai/gym#atari))
+- baselines==0.1.4 ([See this link](https://github.com/openai/baselines). In case of installation issues, read the section below)
+
 
 
 ### Installation issues:
-- Open AI baselines needs Mujoco 1.5 which is a proprietary software. The installation instructions provided on the baselines' GitHub repo mention this step as part of the installation process. You need to install Mujoco and enter the activation code that can be found from Mujoco's website. This enables a 30 day trial.
-- If you are facing problems in the installation of Mujoco 1.5, a mujoco 0.5.7 installation can also work but it needs an older version of baselines (0.1.3). This is a breaking change and the code provided in the solution needs some small modifications to make it work.
+- Open AI baselines needs mujoco-py installed which in-turn needs Mujoco 1.5 which is a proprietary software. You may be able to install baselines without running into any issues with mujoco-py but if the install of baselines fails dues to mujoco-py, then you need to install Mujoco 1.5 first. The installation instructions are provided on [OpenAI's mujoco-py GitHub repo](https://github.com/openai/mujoco-py). You need to install Mujoco and enter the activation code that can be found from Mujoco's website. This enables a 30 day trial.
+- If you are facing problems in the installation of Mujoco 1.5, then mujoco-py==0.5.7 installation can also work but it needs an older version of baselines (0.1.3). This is a breaking change and the code provided in the solution needs some small modifications to make it work.
 
 ### Code structure
 
-The code has two major directories:
+The code has three directories:
 - `python_full_DQN`
 - `python_vanilla_DQN`
 - `training_logs`
 
 Both directories contain a `pacman_agent.py` file which implements the RL agent, a `save_model` directory which contains a pre-trained model and a `logs` directory which contains execution logs in csv format.
 
-The `training_logs` directory contains some renamed log files for earlier training sessions that have recoreded the step count, episode count and the episode rewars for different values of hyperparameters.
+The `training_logs` directory contains some renamed log files for earlier training sessions that have recoreded the step count, episode count and the episode rewards for different values of hyperparameters.
 
 ### Training
 
@@ -53,7 +54,7 @@ Both `python_*_DQN` directories contain a CSV file, called `play_500_eps.csv` wh
 
 ### Visualizing metrics
 
-The progress made on training or playing the game can be visualized using the CSV log files. These files store three key data points: the number of time steps, the number of episodes passed and the reward per episode. The easiest visualization is to make line plot of number of steps vs the episode reward. This graph is usually very jittery therefore taking a moving average over a fixed number of steps can be helpful in visualizing long term trends.
+The progress made on training or playing the game can be visualized using the CSV log files. These files store three key data points: the number of time steps, the number of episodes passed and the reward per episode. The easiest visualization is to make a line plot of the number of steps vs the episode reward. This graph is usually very jittery therefore taking a moving average over a fixed number of steps can be helpful in visualizing long term trends.
 
 
 
